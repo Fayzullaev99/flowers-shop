@@ -1,0 +1,9 @@
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left:0 ;
+    padding-right:0 ;
+}
+.card-item{
+    flex-basis: 25%;
+}
