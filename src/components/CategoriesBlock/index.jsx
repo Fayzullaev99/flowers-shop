@@ -7,7 +7,7 @@ function CategoriesBlock() {
   return (
     <Container className={classes['categories']}>
         {categories.map(category=>(
-            <div className={classes['categories__item']}>
+            <div key={category.link} className={classes['categories__item']}>
                 <img src={category.image} alt={category.text} className={classes['categories__img']} />
                 <Link to={category.link} className={classes['categories__button']}>{category.text}</Link>
             </div>

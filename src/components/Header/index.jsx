@@ -6,10 +6,12 @@ import Container from '../../layout/Container';
 import classes from "./header.module.scss";
 import logo from '../../images/logo.png'
 import categories from '../../routes/categories'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 
 
 const Header = () => {
+  const location = useLocation()
   return (
     <header className={classes['header']}>
       <Container className={classes['header__container']}>
@@ -23,7 +25,7 @@ const Header = () => {
         <ul className={classes['header__list']}>
           {categories.map(({link,text}) =>(
             <li key={link}>
-              <Link to={link} className={classes['header__link']}>{text}</Link>
+              <Link to={link} className={classNames(classes['header__link'],location.pathname === link && classes['header__link_active'])}>{text}</Link>
             </li>
           ))}
         </ul>

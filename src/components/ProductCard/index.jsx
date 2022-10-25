@@ -16,7 +16,7 @@ function ProductCard({className,data}) {
         <h3 className={classes['card__title']}>{data.name}</h3>
         <p className={classes['card__price']}>{data.price} USD. <span className={classes['card__discount']}>{data.discount} USD.</span></p>
         <button className={classNames(classes['card__button'],selected && classes['card__button_selected'])} onClick={selectItem} >{selected ? 'Added' : 'Add To Cart'}</button>
-        <button className={classes['card__like']}><FontAwesomeIcon icon={faHeartRegular}/></button>
+        <button className={classes['card__like']}><FontAwesomeIcon icon={selected ? faHeartSolid : faHeartRegular}/></button>
     </div>
   )
 }
