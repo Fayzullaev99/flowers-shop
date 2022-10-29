@@ -8,8 +8,10 @@ import classes from './DisCountsCarousel.module.scss'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './DiscountSlider.styles.scss'
+import { useSelector } from 'react-redux';
 function DisCountsCarousel() {
   const [data, setData] = useState(null)
+  const {favorite} = useSelector(state=>state)
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`http://localhost:4000/discounts`)
@@ -27,7 +29,7 @@ function DisCountsCarousel() {
         modules={[Navigation]}
       >
         {data.map((item) => (
-          <SwiperSlide><ProductCard key={item.id} data={item} /></SwiperSlide>
+          <SwiperSlide key={item.id}><ProductCard data={item} liked={item.id in favorite} /></SwiperSlide>
         ))
         }
       </Swiper>}
