@@ -4,14 +4,13 @@ import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid} from '@fortawesome/free-solid-svg-icons'
 import classNames from 'classnames'
 import React from 'react'
-import { useState } from 'react'
 import classes from './ProductCard.module.scss'
-import { handlefavorite } from '../../redux/likeSlice/'
+import { handlefavorite } from '../../redux/favorite'
+import { addToCard, removeFromCard } from '../../redux/cart'
 
-function ProductCard({className,data,liked}) {
+function ProductCard({className,data,liked,selected}) {
     const [image] = data.images
-    const [selected,setSelected] = useState(false)
-    const selectItem = ()=>setSelected((prevState)=>!prevState)
+    const selectItem = ()=> dispatch(selected ? removeFromCard(data.id) : addToCard(data))
     const dispatch = useDispatch()
     const handlefavoriteButtonClick = ()=>{
       dispatch(handlefavorite(data))

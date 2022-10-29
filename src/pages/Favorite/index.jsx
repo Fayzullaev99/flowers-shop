@@ -7,7 +7,7 @@ import Title from '../../Title'
 import classes from './Favorite.module.scss'
 
 function Favorite() {
-  const { favorite } = useSelector(state => state)
+  const { favorite, cartItems } = useSelector(state => state)
   const items = Object.values(favorite)
   return (
     <>
@@ -18,7 +18,7 @@ function Favorite() {
           <Container className={classes['cards']}>
 
             {items && items.map((card) => (
-              <ProductCard key={card.id} className={classes['card-item']} data={card} liked={card.id in favorite} />
+              <ProductCard key={card.id} className={classes['card-item']} data={card} liked={card.id in favorite} selected={card.id in cartItems} />
             ))}
           </Container>
         </>

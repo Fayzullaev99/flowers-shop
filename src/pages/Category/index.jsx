@@ -14,7 +14,7 @@ function Category() {
   const {productPage} = useParams()
   const {pathname} = useLocation()
   const [data, setData] = useState(null)
-  const {favorite}= useSelector(state=>state)
+  const {favorite,cart:cartItems}= useSelector(state=>state)
   const {text:title} = categories.find(item => item.link === pathname)
   useEffect(()=>{
     const fetchData = async() => {
@@ -30,7 +30,7 @@ function Category() {
       {title && <Title>{title}</Title>}
       <Container className={classes['cards']}>
         {data && data.map((card) => (
-          <ProductCard key={card.id} className={classes['card-item']} data={card} liked={card.id in favorite} />
+          <ProductCard key={card.id} className={classes['card-item']} data={card} liked={card.id in favorite} selected={card.id in cartItems} />
         ))}
       </Container>
       <DisCountsCarousel />

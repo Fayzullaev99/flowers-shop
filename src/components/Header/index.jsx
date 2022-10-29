@@ -8,10 +8,13 @@ import logo from '../../images/logo.png'
 import categories from '../../routes/categories'
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { getItemsCount } from '../../redux/cart';
 
 
 const Header = () => {
   const location = useLocation()
+  const cartItemsCount = useSelector(getItemsCount)
   return (
     <header className={classes['header']}>
       <Container className={classes['header__container']}>
@@ -20,7 +23,10 @@ const Header = () => {
         </Link>
         
         <Link to="/favorite"><FontAwesomeIcon icon={faHeart} className={classes['header__heart']} /></Link>
-        <FontAwesomeIcon icon={faBagShopping} className={classes['header__bag']} />
+        <Link to="/cart" className={classes['header__bag-wrapper']}><FontAwesomeIcon icon={faBagShopping} className={classes['header__bag']} />
+        {Boolean(cartItemsCount) && <p className={classes['header__bag-count']}>{cartItemsCount}</p>}
+        </Link>
+        
       </Container>
       <Container>
         <ul className={classes['header__list']}>

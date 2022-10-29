@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import favorite from './likeSlice/'
-
+import favorite from './favorite'
+import cart from './cart'
 const store = configureStore({
   reducer: {
-    favorite
+    favorite,
+    cart
   }
 })
 export default store
