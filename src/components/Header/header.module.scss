@@ -1,76 +1,88 @@
 @import '../../theme.scss';
-.header{
-    padding-top: 50px;
+
+.header {
+  padding-top: 50px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-right: auto;
+
+    & img {
+      width: 175px;
+      height: 51px;
+    }
+  }
+
+  &__heart,
+  &__bag {
+    width: 30px;
+    height: 30px;
+    color: $green;
+    cursor: pointer;
+  }
+
+  &__bag {
+    margin-left: 20px;
     
-    &__container{
-        display: flex;
-        align-items: center;
+    &-wrapper{
+      position: relative;
+    }
+    
+    &-count{
+      position: absolute;
+      top: -5px;
+      left: calc(100% - 10px);
+      border-radius: 10px;
+      background: $green;
+      color: #fff;
+      font-size: 16px;
+      min-width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #55B74C 0%, #4BA043 162.75%);
+    border-radius: 7px;
+    margin-top: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    padding: 15px 15px 10px;
+    font-size: 18px;
+    line-height: 25px;
+    color: $white;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      display: block;
+      background: $white;
+      transition: 0.4s transform;
+      transform: scaleX(0);
+      transform-origin: left;
+      margin-top: 5px;
     }
 
-    &__logo{
-        margin-right: auto;
-        & img{
-            width: 175px;
-            height: 51px;
-        }
+    &:hover::after,
+    &_active::after {
+      transform: scaleX(1)
     }
 
-    &__heart, &__bag{
-        font-size: 30px;
-        color: $green;
-        cursor: pointer;
-    }
-    &__bag{
-        margin-left: 20px;
-        &-wrapper{
-            position: relative;
-        }
-        &-count{
-            position: absolute;
-            top: -5px;
-            left: calc(100% - 10px);
-            border-radius: 10px;
-            background: $green;
-            color: $white;
-            min-width: 20px;
-            height: 20px;
-            font-size: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 5px;
-        }
-    }
-    &__list{
-        margin-top: 30px;
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: linear-gradient(180deg, #55B74C 0%, #4BA043 162.75%);
-        border-radius: 7px;
-    }
-    &__link{
-        text-decoration: none;
-        display: inline-block;
-        padding: 15px 15px 10px;
-        font-size: 18px;
-        line-height: 25px;
-        color: $white;
-
-        &::after{
-            content: "";
-            height: 2px;
-            width: 100%;
-            display: block;
-            background: $white;
-            transition: .3s transform;
-            transform: scaleX(0);
-            transform-origin: left;
-        }
-        
-        &:hover::after, &_active::after{
-            transform: scaleX(1);
-        }
-    }
+  }
 }

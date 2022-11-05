@@ -1,30 +1,37 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import DiscountsCarousel from '../../components/DiscountsCarousel'
 import Header from '../../components/Header'
 import ProductCard from '../../components/ProductCard'
+import Title from '../../components/Title'
 import Container from '../../layout/Container'
-import Title from '../../Title'
 import classes from './Favorite.module.scss'
 
-function Favorite() {
-  const { favorite, cartItems } = useSelector(state => state)
-  const items = Object.values(favorite)
+const Favorite = () => {
+  const { like, cart: cartItems } = useSelector((state) => state)
+  const items = Object.values(like)
   return (
     <>
       <Header />
       {items.length ? (
         <>
-          <Title>Favorite Products</Title>
+          <Title>Favorite products</Title>
           <Container className={classes['cards']}>
-
-            {items && items.map((card) => (
-              <ProductCard key={card.id} className={classes['card-item']} data={card} liked={card.id in favorite} selected={card.id in cartItems} />
+            {items.map((card) => (
+              <ProductCard
+                key={card.id}
+                data={card}
+                className={classes['card-item']}
+                liked={card.id in like}
+                selected={card.id in cartItems}
+              />
             ))}
           </Container>
         </>
       ) : (
-        <Title>You don't have Favorite Products</Title>
+        <Title>You don't have favorite products😢</Title>
       )}
+      <DiscountsCarousel />
     </>
   )
 }
