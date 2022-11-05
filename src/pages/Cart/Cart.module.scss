@@ -21,3 +21,19 @@
         margin-bottom: 15px;
     }
 }
+.order-button{
+    background: $green;
+    border-radius: 8px;
+    color: $white;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 50px;
+    width: max-content;
+    padding: 0 100px;
+    display: block;
+    margin: auto;
+    margin-top: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

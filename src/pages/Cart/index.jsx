@@ -22,10 +22,13 @@ function Cart() {
           {...card} />
         )))}
         {!cartEmpty && (
+            <>
             <div className={classes['total']}>
                 <p className={classes['total__description']}>Total:</p>
                 <p className={classes['total__price']}>{total}$</p>
             </div>
+            <button className={classes['order-button']}>Order</button>
+            </>
         )}
       </Container>
       <DisCountsCarousel />
